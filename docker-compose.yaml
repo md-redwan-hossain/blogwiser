@@ -1,6 +1,5 @@
 version: "3.9"
 services:
-
   mongo_for_express:
     image: "bitnami/mongodb:latest"
     restart: unless-stopped
@@ -13,4 +12,15 @@ services:
       - MONGODB_USERNAME=username
       - MONGODB_PASSWORD=password
       - MONGODB_DATABASE=hms
-
+  redis_for_express:
+    image: "bitnami/redis:latest"
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - "./redis_data:/bitnami/redis/data"
+    environment:
+      - REDIS_PASSWORD=admin
+      - REDIS_IO_THREADS=4
+      - REDIS_IO_THREADS_DO_READS=yes
+      - REDIS_DISABLE_COMMANDS=FLUSHDB,FLUSHALL
