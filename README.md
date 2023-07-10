@@ -14,7 +14,7 @@ Rename the `sample.env` file to `.env` and initialize the variables with proper 
 
 ```bash
 # Only for linux
-echo "vm.overcommit_memory = 1" | sudo tee -a /etc/sysctl.conf && sudo chown -R 1001:1001 ./redis_data
+echo "vm.overcommit_memory = 1" | sudo tee -a /etc/sysctl.conf && mkdir redis_data && sudo chown -R 1001:1001 ./redis_data
 
 # Normal mode
 docker compose up
