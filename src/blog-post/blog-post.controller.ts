@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Param, Patch, Post, Version } from "@nestjs/common";
 import { BlogPostService } from "./blog-post.service";
 import { CreateBlogPostDto } from "./dto/create-blog-post.dto";
 import { UpdateBlogPostDto } from "./dto/update-blog-post.dto";
@@ -11,7 +11,7 @@ export class BlogPostController {
   create(@Body() createBlogPostDto: CreateBlogPostDto) {
     return this.blogPostService.create(createBlogPostDto);
   }
-
+  @Version("1")
   @Get()
   findAll() {
     return this.blogPostService.findAll();
